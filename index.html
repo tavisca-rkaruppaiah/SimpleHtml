@@ -9,7 +9,7 @@
    
    
 </head>
-<body>  
+<body onload="createTable()">  
   <script src="./js/main.js"></script>
         <header>
           <h2>tavisca</h2>
@@ -17,26 +17,37 @@
         
         <section>
           <nav>
-            <ul>
-              <li><a href="#todo" onClick="visibleSomePages('todo');">ToDo</a></li>
-              <li><a href="#login" onClick="visibleSomePages('login');">Login</a></li>
-              <li><a href="#user" onClick="visibleSomePages('user');">User</a></li>
-            </ul>
+              <div class="btn-group">
+                  <button class="button" onClick="visibleSomePages('todo','login','user');">ToDo</button>
+                  <button class="button" onClick="visibleSomePages('login','todo','user');">Login</button>
+                  <button class="button" onClick="visibleSomePages('user','todo', 'login');">User</button>
+                </div>
+                
+            <!--ul>
+              <li><a class = "td" href="#todo" onClick="visibleSomePages('todo','login','user');">ToDo</a></li><br>
+              <li><a class="log" href="#login" onClick="visibleSomePages('login','todo','user');">Login</a></li><br>
+              <li><a class="use" href="#user" onClick="visibleSomePages('user','todo', 'login');">User</a></li>
+            </ul-->
           </nav>
           <div class="mainbody">
-                <div id="todo">
+                <div id="todo" >
                         <p>this is todo</p>
-                        <input type="button" value="Search"> <input type="text" id="item" name="itemName" placeholder="Enter the Item Name"> <input type="button"  value="Add" onclick="addItemToList()"><br/>
-                        <ol id="items">
-                          <li>Ragu</li>
-                        </ol>
+                        <p>
+                            <input type="button" id="addRow" value="Add New Row" onclick="addRow()" />
+                        </p>
+                    
+                        <!--THE CONTAINER WHERE WE'll ADD THE DYNAMIC TABLE-->
+                        <div id="cont"></div>
+                    
+                        <p><input type="button" id="bt" value="Submit Data" onclick="submit()" /></p>
+                        <p>(See the result in the console window.)</p>
                       </div>
                       <div id="login">
                           <p>this is login</p>
 
                           <div>
                             <form action="">
-                              <input type="email" name="email" placeholder="Enter your email" required><br/>
+                              <input type="email" name="email" placeholder="Enter your email" required onblur="validateEmail(this);"><br/><br/>
                               <input type="password" name ="password" placeholder="Enter your password"><br>
                               <input type="submit" value="Login">
                             </form>
