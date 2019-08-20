@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Index</title>
+   
+    <script>
+      function addItem()
+      {
+          var li = document.createElement("LI");  
+          var input = document.getElementById("item");
+          console.log(input.value);
+          li.innerHTML = input.value;
+          input.value = "";
+          document.getElementById("items").appendChild(li);
+      }
+  </script>
+</head>
+<body>  
+        <header>
+          <h2>tavisca</h2>
+        </header>
+        
+        <section>
+          <nav>
+            <ul>
+              <li><a href="#todo" onClick="document.getElementById('todo').style.display='block';document.getElementById('user').style.display='none';document.getElementById('login').style.display='none';">ToDo</a></li>
+              <li><a href="#login" onClick="document.getElementById('login').style.display='block';document.getElementById('user').style.display='none';document.getElementById('todo').style.display='none';">Login</a></li>
+              <li><a href="#user" onClick="document.getElementById('user').style.display='block';document.getElementById('todo').style.display='none';document.getElementById('login').style.display='none';">User</a></li>
+            </ul>
+          </nav>
+          <div class="mainbody">
+                <div id="todo">
+                        <p>this is todo</p>
+                        <input type="button" value="Search"> <input type="text" id="item" name="itemName" placeholder="Enter the Item Name"> <input type="button"  value="Add" onclick="addItem()"><br/>
+                        <ol id="items">
+                          <li>Ragu</li>
+                        </ol>
+                      </div>
+                      <div id="login">
+                          <p>this is login</p>
+
+                          <div>
+                            <form action="">
+                              <input type="email" name="email" placeholder="Enter your email" required><br/>
+                              <input type="password" name ="password" placeholder="Enter your password"><br>
+                              <input type="submit" value="Login">
+                            </form>
+                          </div>
+
+                      </div>
+                      <div id="user">
+                          <p>this is user</p>
+                          <h1>Welcome Ragu Balagi Karuppaiah !!!</h1>
+                      </div>
+                    </div>
+          
+         
+        </section>
+        
+        <footer>
+                <a href="index.html">Home</a> <a href="about.html">About</a> <a href="contact.html">Contact Us</a>
+        </footer>
+</body>
+</html>
