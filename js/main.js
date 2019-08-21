@@ -1,24 +1,4 @@
-function addItemToList()
-{
-    var li = document.createElement("LI");  
-    var input = document.getElementById("item");
-    var btnEdit = document.createElement("BUTTON");
-    btnEdit.innerHTML = "Edit";
-    var btnDelete = document.createElement("BUTTON");
-    btnDelete.innerHTML = "Delete";
-    console.log(input.value);
-    if(input.value.length != 0)
-    {
-        li.innerHTML = input.value;
-        input.value = "";
-        document.getElementById("items").appendChild(li).appendChild(btnEdit);
-    }
-    else
-    {
-        alert('Enter Item Name');
-    }
-}
-
+//visible particluar divs
 function visibleSomePages(visibleid, hidepartone, hideparttwo )
 {
     document.getElementById(visibleid).style.display='block';
