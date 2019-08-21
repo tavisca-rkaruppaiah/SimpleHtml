@@ -110,3 +110,24 @@ function validateEmail(emailField)
 
     return true;
 }
+//login function
+function login()
+{
+    if(validPassword() == true)
+    {
+        alert('sucessfully logged');
+    }
+}
+
+function validPassword()
+{
+    var pass = document.getElementById('pass').value;
+    if(pass.length == 0)
+    {
+        alert('invalid password');
+        console.log('false');
+        return false;
+    }
+
+    return true;
+}
