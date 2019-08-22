@@ -30,10 +30,27 @@ function createTable()
        div.appendChild(itemTable);    // ADD THE TABLE TO YOUR WEB PAGE.
 }
 
+//method for search 
+
+function search()
+{
+    let searchItem = document.getElementById('item').value;
+    if(searchItem.length == 0)
+    {
+        alert('Enter item Name');
+        console.log('Empty Item Name');
+    }
+    else
+    {
+        console.log('item is available');
+    }
+}
+
 // ADD A NEW ROW TO THE TABLE.s
 function addRow() 
 {
     var itemTab = document.getElementById('itemTable');
+    let getItem = document.getElementById('item').value;
 
     var rowCnt = itemTab.rows.length;        // GET TABLE ROW COUNT.
     var tr = itemTab.insertRow(rowCnt);      // TABLE ROW.
@@ -63,7 +80,7 @@ function addRow()
             // CREATE AND ADD TEXTBOX IN EACH CELL.
             var ele = document.createElement('input');
             ele.setAttribute('type', 'text');
-            ele.setAttribute('value', '');
+            ele.setAttribute('value', getItem);
 
             td.appendChild(ele);
         }
@@ -96,6 +113,7 @@ function submit()
             }
         }
     }
+    console.log(values);
 }
 //validate email
 function validateEmail(emailField)
