@@ -66,7 +66,7 @@ function addRow()
             // SET INPUT ATTRIBUTE.
             buttonDel.setAttribute('type', 'button');
             buttonDel.setAttribute('value', 'Del');
-            buttonDel.setAttribute('class', 'delete');
+            buttonDel.setAttribute('id', 'delete');
 
             // ADD THE BUTTON's 'onclick' EVENT.
             buttonDel.setAttribute('onclick', 'removeRow(this)');
@@ -80,32 +80,92 @@ function addRow()
             // SET INPUT ATTRIBUTE.
             buttonEdit.setAttribute('type', 'button');
             buttonEdit.setAttribute('value', 'Edit');
-            buttonDel.setAttribute('class', 'delete');
+            buttonEdit.setAttribute('id', 'edit');
 
             // ADD THE BUTTON's 'onclick' EVENT.
-            buttonEdit.setAttribute('onclick', 'submit()');
+            buttonEdit.setAttribute('onclick', 'editRow(this)');
 
             td.appendChild(buttonEdit);
         }
         else 
         {
             // CREATE AND ADD TEXTBOX IN EACH CELL.
-            var ele = document.createElement('input');
+            var ele = document.createElement('p');
+            ele.setAttribute('id', 'item'+count);
             ele.innerHTML = getItem;
-            ele.setAttribute('type','text');
-            ele.setAttribute('value', getItem);
             td.appendChild(ele);
-
-            submit();
+            count++;
+            //submit();
         }
     }
+    document.getElementById('item').value = "";
+
 }
 
 // DELETE TABLE ROW.
 function removeRow(oButton) 
 {
-    var itemTab = document.getElementById('itemTable');
+    let itemTab = document.getElementById('itemTable');
     itemTab.deleteRow(oButton.parentNode.parentNode.rowIndex);       // BUTTON -> TD -> TR.
+}
+
+//Edit Table Row
+
+function editRow(oButton)
+{
+    let itemTab = document.getElementById('itemTable');
+    itemTab.rows.item(oButton.parentNode.parentNode.rowIndex).cells[1].childNodes[0].innerHTML;
+    console.log(itemTab.rows.item(oButton.parentNode.parentNode.rowIndex).cells[1].childNodes[0].innerHTML);
+    console.log(oButton.parentNode.parentNode.rowIndex);  
+    let tempButton = itemTab.rows.item(oButton.parentNode.parentNode.rowIndex).cells[2].childNodes[0].value;
+    console.log(tempButton);
+    console.log(oButton.parentElement.previousElementSibling);
+    let ele=oButton.parentElement.previousElementSibling;
+    console.log(ele.childNodes[0]);
+    let input=document.createElement("input");
+    input.setAttribute("type","text");
+    input.setAttribute("id","getdata");
+    console.log(ele.textContent);
+    input.setAttribute('value', ele.textContent);
+    ele.replaceChild(input,ele.childNodes[0]);
+
+    var prev=oButton.parentElement;
+    console.log(prev);
+    var savebutton=document.createElement("input");
+    savebutton.setAttribute('type','button');
+    savebutton.setAttribute('value', 'Save');
+    savebutton.setAttribute("onclick","saveNewValue(this)");
+    prev.replaceChild(savebutton,prev.childNodes[0]);
+
+
+}
+
+// save the new values
+
+function saveNewValue(oButton)
+{
+    console.log('save new value');
+    console.log(oButton.parentElement);
+    let ele=oButton.parentElement.previousElementSibling;
+
+    console.log(ele.childNodes[0]);
+    console.log(ele.nextElementSibling.childNodes[0]);
+    console.log(document.getElementById('getdata').value);
+    let eleP = document.createElement('p');
+    eleP.setAttribute('id', 'item'+count);
+    eleP.innerHTML = document.getElementById('getdata').value;
+    ele.replaceChild(eleP, ele.childNodes[0]);
+
+    var buttonEdit = document.createElement('input');
+
+    // SET INPUT ATTRIBUTE.
+    buttonEdit.setAttribute('type', 'button');
+    buttonEdit.setAttribute('value', 'Edit');
+    buttonEdit.setAttribute('id', 'edit');
+
+    // ADD THE BUTTON's 'onclick' EVENT.
+    buttonEdit.setAttribute('onclick', 'editRow(this)');
+    ele.nextElementSibling.replaceChild(buttonEdit, ele.nextElementSibling.childNodes[0]);
 }
 
 
