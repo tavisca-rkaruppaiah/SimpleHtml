@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo</title>
+    <link rel = "stylesheet" type = "text/css" href = ".\css\styles.css" />
+</head>
+<body>
+    <script src="./js/main.js"></script>
+    <div class="header">
+        <img src="./images/avengerslogo.png" alt="logo" height="100px" width="100px">
+    </div>
+    <div class="row">
+        <div class="left">
+            <ul>
+                <li><a class="active" id="to" href="#todo" onclick="visibleSomePages('todo','user', 'login', 'to', 'lo', 'us');">ToDo</a></li>
+                <li><a href="#login" id="lo" onclick="visibleSomePages('login','todo', 'user', 'lo','to','us');">Login</a></li>
+                <li><a href="#user" id="us" onclick="visibleSomePages('user','todo', 'login', 'us', 'to','lo');">User</a></li>
+            </ul>              
+        </div>
+        <div class="right">
+           <div class="todo" id="todo">this is do</div>
+           <div class="login" id="login">this is login</div>
+           <div class="user" id="user">this is user</div>
+        </div>
+    </div>
+    <div class="footer">
+            <div class="btn-group" style="width:100%">
+                <button style="width:33.3%" onclick="redirectPages('index.html');">Home</button>
+                <button style="width:33.3%" onclick="redirectPages('about.html');">About</button>
+                <button style="width:33.3%" onclick="redirectPages('contact.html');">Contact</button>
+            </div>
+    </div>
+      
+</body>
+</html>
