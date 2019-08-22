@@ -52,6 +52,12 @@ function addRow()
     var itemTab = document.getElementById('itemTable');
     let getItem = document.getElementById('item').value;
 
+    if(getItem.length == 0)
+    {
+        alert('Enter Item Name');
+        return false;
+    }
+
     var rowCnt = itemTab.rows.length;        // GET TABLE ROW COUNT.
     var tr = itemTab.insertRow(rowCnt);      // TABLE ROW.
     tr = itemTab.insertRow(rowCnt);
