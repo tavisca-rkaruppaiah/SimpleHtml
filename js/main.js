@@ -66,6 +66,7 @@ function addRow()
             // SET INPUT ATTRIBUTE.
             buttonDel.setAttribute('type', 'button');
             buttonDel.setAttribute('value', 'Del');
+            buttonDel.setAttribute('class', 'delete');
 
             // ADD THE BUTTON's 'onclick' EVENT.
             buttonDel.setAttribute('onclick', 'removeRow(this)');
@@ -79,6 +80,7 @@ function addRow()
             // SET INPUT ATTRIBUTE.
             buttonEdit.setAttribute('type', 'button');
             buttonEdit.setAttribute('value', 'Edit');
+            buttonDel.setAttribute('class', 'delete');
 
             // ADD THE BUTTON's 'onclick' EVENT.
             buttonEdit.setAttribute('onclick', 'submit()');
