@@ -24,16 +24,16 @@
            <div class="todo" id="todo">
                
 
-                <form autocomplete="off" action="/action_page.php">
+               
                     <div class="autocomplete" style="width:100%;">
-                        <input type="button" value="Search" " /> <input type="text" id="item"  placeholder="Enter the Item Name" /> <input type="button" value="Add" onclick="addRow();"/>
+                        <input type="button" value="Search" onclick="submit();"/> <input type="text" id="item" autocomplete="off" placeholder="Enter the Item Name" /> <input type="button" value="Add" onclick="addRow();"/>
                     
                     </div>
                     <div class="box" id="element">
                         <div id="cont"></div>
                      
                     </div>
-                </form>
+                
            </div>
            <div class="login" id="login">
                <input type="email" placeholder="Enter your Email" onblur="validateEmail(this);" require /><br/>

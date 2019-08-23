@@ -192,6 +192,7 @@ function submit()
 {
     var myTab = document.getElementById('itemTable');
     let valueSearch = document.getElementById('item').value;
+    console.log(valueSearch);
     
     var values = new Array();
 
@@ -202,9 +203,15 @@ function submit()
         {   
             // EACH CELL IN A ROW.
             var element = myTab.rows.item(row).cells[c];
-            if (element.childNodes[0].getAttribute('type') == 'text') 
+            console.log(myTab.rows.item(row).cells[1].childNodes[0]);
+            if (element.childNodes[0].innerHTML == valueSearch) 
             {
-                   values.push("'" + element.childNodes[0].value + "'");
+                   values.push("'" + element.childNodes[0].innerHTML + "'");
+                   myTab.rows.item(row).cells[1].childNodes[0].style.color = 'blue';
+            }
+            else
+            {
+                element.childNodes[0].style.color = 'black';
             }
         }
     }
