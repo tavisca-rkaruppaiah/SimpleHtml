@@ -47,7 +47,8 @@ function addRow()
 
     if(getItem.length == 0)
     {
-        alert('Enter Item Name');
+        alert('Added element using JSONPlaceholder');
+        jsonPlace();
         return false;
     }
 
@@ -257,7 +258,70 @@ function jsonPlace()
 {
     fetch('https://jsonplaceholder.typicode.com/todos/')
         .then(response => response.json())
-        .then(json => console.log(json))
+        .then(json => {
+          console.log(json.length);
+
+          for(let i =0; i<10;i++)
+          {
+              addJsonRow(json[i].title);
+          }
+        });
+}
+
+function addJsonRow(data)
+{
+  var itemTab = document.getElementById('itemTable');
+    let getItem = data;
+    var rowCnt = itemTab.rows.length;        // GET TABLE ROW COUNT.
+    var tr = itemTab.insertRow(rowCnt);      // TABLE ROW.
+    tr = itemTab.insertRow(rowCnt);
+
+    for (var c = 0; c < arrHead.length; c++) 
+    {
+        var td = document.createElement('td');          // TABLE DEFINITION.
+        td = tr.insertCell(c);
+
+        if (c == 0) 
+        {    // FIRST COLUMN.
+            // ADD A BUTTON.
+            var buttonDel = document.createElement('input');
+
+            // SET INPUT ATTRIBUTE.
+            buttonDel.setAttribute('type', 'button');
+            buttonDel.setAttribute('value', 'Del');
+            buttonDel.setAttribute('id', 'delete');
+
+            // ADD THE BUTTON's 'onclick' EVENT.
+            buttonDel.setAttribute('onclick', 'removeRow(this)');
+
+            td.appendChild(buttonDel);
+        }
+        else if(c == 2)
+        {
+            var buttonEdit = document.createElement('input');
+
+            // SET INPUT ATTRIBUTE.
+            buttonEdit.setAttribute('type', 'button');
+            buttonEdit.setAttribute('value', 'Edit');
+            buttonEdit.setAttribute('id', 'edit');
+
+            // ADD THE BUTTON's 'onclick' EVENT.
+            buttonEdit.setAttribute('onclick', 'editRow(this)');
+
+            td.appendChild(buttonEdit);
+        }
+        else 
+        {
+            // CREATE AND ADD TEXTBOX IN EACH CELL.
+            var ele = document.createElement('p');
+            ele.innerHTML = getItem;
+            td.appendChild(ele);
+            tags.push(getItem);
+            //submit();
+        }
+    }
+    //document.getElementById('item').value = "";
+
 }
 
 
